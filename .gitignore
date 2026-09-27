@@ -1,0 +1,24 @@
+.venv/
+uv
+cache/
+outputs/
+__pycache__/
+.pytest_cache/
+.env
+*.key
+typesaft_api_key.txt
+.DS_Store
+._*
+AGENTS.md
+agents.md
+ready.md
+data/
+.tmp/
+
+# Local experiment artifacts can contain third-party prompts, model outputs,
+# API payloads or large checkpoints. Publish curated aggregates instead.
+results/
+data_download.sh
+docs/*
+!docs/EXPERIMENT_RESULTS.md
+!docs/EXPERIMENT_RESULTS.zh-CN.md

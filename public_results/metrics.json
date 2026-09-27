@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "scope": "aggregate_metrics_only",
+  "model": "Qwen3.5-4B text backbone",
+  "training_seed": 42,
+  "jev_returned_model": [
+    "jev-1.13.0"
+  ],
+  "reward_validation": {
+    "dataset": "HelpSteer2 validation",
+    "responses": 1038,
+    "prompts": 519,
+    "metrics": {
+      "helpfulness": {
+        "pearson": 0.455903,
+        "spearman": 0.390783,
+        "mae_normalized": 0.251491,
+        "pairwise_accuracy": 0.745308,
+        "pairwise_ci95": [
+          0.699732,
+          0.792225
+        ],
+        "pairwise_n": 373
+      },
+      "correctness": {
+        "pearson": 0.45148,
+        "spearman": 0.390752,
+        "mae_normalized": 0.251252,
+        "pairwise_accuracy": 0.676554,
+        "pairwise_ci95": [
+          0.625706,
+          0.724576
+        ],
+        "pairwise_n": 354
+      },
+      "coherence": {
+        "pearson": 0.427865,
+        "spearman": 0.315244,
+        "mae_normalized": 0.137772,
+        "pairwise_accuracy": 0.770408,
+        "pairwise_ci95": [
+          0.711735,
+          0.826531
+        ],
+        "pairwise_n": 196
+      }
+    }
+  },
+  "gsm8k_smoke": {
+    "dataset": "GSM8K test first 16 examples",
+    "evaluation_n": 16,
+    "purpose": "integration_check_only",
+    "models": [
+      {
+        "name": "smoke-base",
+        "training_steps": 0,
+        "training_status": "base_model",
+        "correct": 11,
+        "n": 16,
+        "accuracy": 0.6875,
+        "accuracy_ci95": [
+          0.4375,
+          0.875
+        ],
+        "invalid_answer_rate": 0.1875,
+        "mean_completion_tokens": 372.625
+      },
+      {
+        "name": "smoke-reference",
+        "training_steps": 2,
+        "training_status": "completed",
+        "correct": 12,
+        "n": 16,
+        "accuracy": 0.75,
+        "accuracy_ci95": [
+          0.5625,
+          0.9375
+        ],
+        "invalid_answer_rate": 0.125,
+        "mean_completion_tokens": 370.5
+      },
+      {
+        "name": "smoke-jev",
+        "training_steps": 2,
+        "training_status": "completed",
+        "correct": 12,
+        "n": 16,
+        "accuracy": 0.75,
+        "accuracy_ci95": [
+          0.5625,
+          0.9375
+        ],
+        "invalid_answer_rate": 0.1875,
+        "mean_completion_tokens": 366.438
+      }
+    ]
+  },
+  "gsm8k_pilot": {
+    "dataset": "GSM8K test",
+    "evaluation_n": 1319,
+    "greedy_max_tokens": 512,
+    "models": [
+      {
+        "name": "base",
+        "training_steps": 0,
+        "training_status": "base_model",
+        "correct": 1127,
+        "n": 1319,
+        "accuracy": 0.854435,
+        "accuracy_ci95": [
+          0.834723,
+          0.873389
+        ],
+        "invalid_answer_rate": 0.088704,
+        "mean_completion_tokens": 328.748
+      },
+      {
+        "name": "reference",
+        "training_steps": 144,
+        "training_status": "completed",
+        "correct": 1147,
+        "n": 1319,
+        "accuracy": 0.869598,
+        "accuracy_ci95": [
+          0.849886,
+          0.887794
+        ],
+        "invalid_answer_rate": 0.065201,
+        "mean_completion_tokens": 319.525
+      },
+      {
+        "name": "jev",
+        "training_steps": 144,
+        "training_status": "completed",
+        "correct": 1152,
+        "n": 1319,
+        "accuracy": 0.873389,
+        "accuracy_ci95": [
+          0.855174,
+          0.891585
+        ],
+        "invalid_answer_rate": 0.062168,
+        "mean_completion_tokens": 318.232
+      }
+    ],
+    "paired_jev_minus_reference": {
+      "difference": 0.003791,
+      "ci95": [
+        -0.005307,
+        0.012889
+      ]
+    }
+  },
+  "gsm8k_expanded": {
+    "dataset": "GSM8K test",
+    "evaluation_n": 1319,
+    "greedy_max_tokens": 512,
+    "models": [
+      {
+        "name": "expanded-reference-seed42",
+        "training_steps": 1602,
+        "training_status": "completed",
+        "correct": 1203,
+        "n": 1319,
+        "accuracy": 0.912055,
+        "accuracy_ci95": [
+          0.896133,
+          0.927218
+        ],
+        "invalid_answer_rate": 0.034117,
+        "mean_completion_tokens": 257.936
+      },
+      {
+        "name": "expanded-jev-seed42-step1300",
+        "training_steps": 1300,
+        "training_status": "checkpoint_from_interrupted_run",
+        "correct": 1186,
+        "n": 1319,
+        "accuracy": 0.899166,
+        "accuracy_ci95": [
+          0.882487,
+          0.915087
+        ],
+        "invalid_answer_rate": 0.044731,
+        "mean_completion_tokens": 288.939
+      }
+    ],
+    "paired_jev_minus_reference": {
+      "difference": -0.012889,
+      "ci95": [
+        -0.025019,
+        -0.000758
+      ],
+      "equal_training_steps": false
+    }
+  },
+  "toolrl": {
+    "dataset": "ToolRL rlla_4k test",
+    "source_test_rows": 80,
+    "evaluated_rows": 79,
+    "excluded_overlength": 1,
+    "call_required_n": 71,
+    "no_call_n": 8,
+    "greedy_max_tokens": 1024,
+    "official_bfcl": false,
+    "tool_execution": false,
+    "models": [
+      {
+        "name": "tool-reference-step1300",
+        "training_steps": 1300,
+        "training_status": "completed",
+        "correct": 47,
+        "n": 79,
+        "exact_match": 0.594937,
+        "exact_match_ci95": [
+          0.481013,
+          0.696203
+        ],
+        "call_required_correct": 43,
+        "call_required_n": 71,
+        "format_correct": 75,
+        "no_call_abstentions": 6,
+        "no_call_n": 8,
+        "mean_completion_tokens": 152.797,
+        "truncated": 0
+      },
+      {
+        "name": "tool-jev-step1300",
+        "training_steps": 1300,
+        "training_status": "completed_after_resume",
+        "correct": 44,
+        "n": 79,
+        "exact_match": 0.556962,
+        "exact_match_ci95": [
+          0.443038,
+          0.670886
+        ],
+        "call_required_correct": 40,
+        "call_required_n": 71,
+        "format_correct": 75,
+        "no_call_abstentions": 4,
+        "no_call_n": 8,
+        "mean_completion_tokens": 166.848,
+        "truncated": 0
+      },
+      {
+        "name": "tool-jev-step850",
+        "training_steps": 850,
+        "training_status": "intermediate_checkpoint",
+        "correct": 45,
+        "n": 79,
+        "exact_match": 0.56962,
+        "exact_match_ci95": [
+          0.455696,
+          0.683544
+        ],
+        "call_required_correct": 41,
+        "call_required_n": 71,
+        "format_correct": 75,
+        "no_call_abstentions": 4,
+        "no_call_n": 8,
+        "mean_completion_tokens": 165.051,
+        "truncated": 0
+      },
+      {
+        "name": "tool-jev-no-answer-step1250",
+        "training_steps": 1250,
+        "training_status": "checkpoint_from_interrupted_run",
+        "correct": 43,
+        "n": 79,
+        "exact_match": 0.544304,
+        "exact_match_ci95": [
+          0.43038,
+          0.64557
+        ],
+        "call_required_correct": 39,
+        "call_required_n": 71,
+        "format_correct": 74,
+        "no_call_abstentions": 7,
+        "no_call_n": 8,
+        "mean_completion_tokens": 180.241,
+        "truncated": 0
+      }
+    ],
+    "paired_jev1300_minus_reference1300": {
+      "difference": -0.037975,
+      "ci95": [
+        -0.088608,
+        0.0
+      ],
+      "jev_only_correct": 0,
+      "reference_only_correct": 3,
+      "mcnemar_exact_p": 0.25
+    }
+  },
+  "source_files": [
+    "results/reward_validation.json",
+    "results/summary.json",
+    "results/expanded_comparison.json",
+    "results/tool_comparison.json",
+    "results/*.metrics.json",
+    "results/*.tool-metrics.json"
+  ]
+}
