@@ -100,3 +100,7 @@ For the saved results in this repository, read [the report](docs/EXPERIMENT_RESU
 ## Publication scope
 
 `public_results/` contains aggregate metrics and plots. The working `results/`, `outputs/` and `cache/` directories may contain dataset text, model responses, API data, large checkpoints or credentials; they are excluded from Git. The result report records which arms completed, which stopped on HTTP 402, and where training steps differ. Exact reproduction also requires the same externally downloaded model and dataset revisions.
+
+## Acknowledgments
+
+Thanks to [wllzhang](https://github.com/wllzhang) for supporting the Jev API credits used in these experiments.
